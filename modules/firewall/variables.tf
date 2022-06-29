@@ -5,3 +5,7 @@ variable "region" {
 variable "resource_group" {
   description = "This is the resource group where resources will be deployed."
 }
+
+variable "fwnet_id" {
+  description = "firewall subnet id"
+}
