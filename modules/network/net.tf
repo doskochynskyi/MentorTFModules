@@ -1,21 +1,21 @@
 resource "azurerm_virtual_network" "net" {
-  name                = "tfvnetnginx"
-  address_space       = ["192.168.0.0/16"]
+  name                = "tfvnet${var.prefix}"
+  address_space       = "${var.vnet_address_space}"
   location            = "${var.region}"
   resource_group_name = "${var.resource_group}"
 }
 
 resource "azurerm_subnet" "fwnet" {
-  name                 = "AzureFirewallSubnet"
+  name                 = "AzureFirewallSubnet${var.prefix}"
   resource_group_name = "${var.resource_group}"
   virtual_network_name = azurerm_virtual_network.net.name
-  address_prefixes     = ["192.168.140.0/24"]
+  address_prefixes     = "${var.subnet_firewall_address_space}"
 }
 
 resource "azurerm_subnet" "acinet" {
-  name                 = "aci-subnet"
+  name                 = "aci-subnet${var.prefix}"
   resource_group_name = "${var.resource_group}"
   virtual_network_name = azurerm_virtual_network.net.name
-  address_prefixes     = ["192.168.141.0/24"]
+  address_prefixes     = "${var.subnet_aci_address_space}"
 }
 
