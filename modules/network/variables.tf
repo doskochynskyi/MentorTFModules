@@ -14,15 +14,15 @@ variable "prefix" {
 variable "vnet_address_space" {
   
   description = "This is the environment where your webapp is deployed. qa, prod, or dev"
-  default = "192.168.0.0/16"
+  default = ["192.168.0.0/16"]
 }
 
 variable "subnet_firewall_address_space" {
   description = "This is the environment where your webapp is deployed. qa, prod, or dev"
-  default = "192.168.171.0/24"
+  default = ["192.168.171.0/24"]
 }
 
 variable "subnet_aci_address_space" {
   description = "This is the environment where your webapp is deployed. qa, prod, or dev"
-  default = "192.168.172.0/24"
+  default = ["192.168.172.0/24"]
 }
